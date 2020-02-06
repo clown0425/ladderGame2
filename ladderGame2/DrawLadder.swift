@@ -9,11 +9,17 @@
 import Foundation
 
 func markLadder(playerNumber:Int, ladderHeight:Int) -> [[Bool]] {
+    
     var ladderExistence:[[Bool]] = Array(repeating: Array(repeating: false, count: playerNumber - 1), count: ladderHeight)
+    
     for i in 0..<ladderHeight{
-        for j in 0..<(playerNumber - 1){
-            ladderExistence[i][j] = Bool.random()
+        ladderExistence[i][0] = Bool.random()
+        for j in 1..<(playerNumber - 1){
+            if ladderExistence[i][j-1] == false {
+               ladderExistence[i][j] = Bool.random()
+            }
         }
     }
+    
     return ladderExistence
 }
