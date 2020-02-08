@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+struct LadderBoard {
+    init(parsedInput:([Player], Int, [[Bool]])) {
+        players.self = parsedInput.0
+        Height.self = parsedInput.1
+        Existence.self = parsedInput.2
+    }
+    let players:[Player]
+    let Height:Int
+    let Existence:[[Bool]]
+}
