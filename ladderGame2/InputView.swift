@@ -8,7 +8,19 @@
 
 import Foundation
 
-func requestInput(message:String) -> String {
-    print(message)
-    return readLine()!
+struct InputView {
+    
+    func requestLadderGameData() -> (String, String) {
+        
+        let playerName = request(.playerName)
+        let ladderHeight = request(.ladderHeight)
+        
+        return (playerName, ladderHeight)
+    }
+    
+    func request(_ message:Message) -> String {
+        print(message.rawValue)
+        return readLine()!
+    }
+    
 }
