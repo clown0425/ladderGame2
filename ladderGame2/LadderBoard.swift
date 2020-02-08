@@ -11,10 +11,10 @@ import Foundation
 struct LadderBoard {
     init(parsedInput:([Player], Int, [[Bool]])) {
         players.self = parsedInput.0
-        Height.self = parsedInput.1
-        Existence.self = parsedInput.2
+        height.self = parsedInput.1
+        existence.self = parsedInput.2
     }
     let players:[Player]
-    let Height:Int
-    let Existence:[[Bool]]
+    let height:Int
+    let existence:[[Bool]]
 }
