@@ -10,16 +10,16 @@ import Foundation
 
 func playLadderGame(){
     
-    let InputPlayerNumber = requestInput(message: Message.requestPlayerNumber.rawValue)
-    let InputLadderHeight = requestInput(message: Message.requestLadderHeight.rawValue)
-    
-    if let playerNumber = Int(InputPlayerNumber), let ladderHeight = Int(InputLadderHeight) {
-        let ladderExistence = markLadder(playerNumber: playerNumber, ladderHeight: ladderHeight)
-        printLadder(playerNumber: playerNumber, ladderHeight: ladderHeight, ladderExistence: ladderExistence)
-        return
+    let userInput = InputView().requestLadderGameData()
+    do {
+        let ladderBoard = try Parse().convertToLadderBoard(userInput: (userInput.0, userInput.1))
+        ResultView().printResult(ladderBoard: ladderBoard)
+    } catch let error as InputError {
+        print(error.description)
+    }catch{
+        print(InputError.unknownError.description)
     }
-    print(Message.wrongInput.rawValue)
-    return
+    
 }
 
 playLadderGame()
