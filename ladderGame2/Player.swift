@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+struct Player {
+    var name:String
+    var nameLength:Int
+    
+    init(playerName:String) {
+        name.self = playerName
+        nameLength.self = playerName.count
+    }
+}
