@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+enum InputError: Error {
+    case isNotInt
+    case unknownError
+    
+    var description:String{
+        switch self {
+        case .isNotInt:
+            return Message.wrongLadderHeightInput.rawValue
+        case .unknownError:
+            return "알 수 없는 에러 "
+        }
+    }
+}
