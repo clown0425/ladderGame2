@@ -8,16 +8,42 @@
 
 import Foundation
 
-func printLadder(playerNumber:Int, ladderHeight:Int, ladderExistence:[[Bool]]) {
-    for i in 0..<ladderHeight {
-        for j in 0..<playerNumber - 1 {
-            print("ㅣ", terminator: "")
-            if ladderExistence[i][j] == true{
-                print("---", terminator: "")
-                continue
-            }
-            print("   ", terminator: "")
-        }
-        print("ㅣ")
+struct ResultView {
+    
+    func printResult(ladderBoard:LadderBoard) {
+        
+        printPlayerName(players: ladderBoard.players)
+        printLadder(ladderBoard: ladderBoard)
     }
+    
+    private func printPlayerName(players:[Player]) {
+        for player in players {
+            printEmpty(number: 4 - ((player.nameLength + 1) / 2))
+            print(player.name, terminator: "")
+        }
+        print(" ")
+    }
+    
+    private func printEmpty(number:Int) {
+        for _ in 0..<number {
+            print(" ", terminator: "")
+        }
+    }
+    
+    private func printLadder(ladderBoard:LadderBoard) {
+        for i in 0..<ladderBoard.height {
+            print("   ", terminator: "")
+            for j in 0..<ladderBoard.players.count - 1 {
+                print(Ladder.bar.rawValue, terminator: "")
+                if ladderBoard.existence[i][j] == true{
+                    print(Ladder.existStep.rawValue, terminator: "")
+                    continue
+                }
+                print(Ladder.emptyStep.rawValue, terminator: "")
+            }
+            print(Ladder.bar.rawValue)
+        }
+    }
+    
+    
 }
